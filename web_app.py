@@ -18,13 +18,10 @@ def user(id):
     except:
         return "<H1 id='error'>""Something went wrong...</H1>", 500
 
+@app.route('/stop_server',methods=['GET'])
 def stop_server():
-    try:
-        os.kill(os.getpid(), signal.SIGINT)
-        return 'Server stopped', 200
-    except Exception as e:
-        return 'Error while stopping server', 500
-
+    os.kill(os.getpid(), signal.SIGINT)
+    return 'Server stopped'
 
 app.run(host='127.0.0.1', debug=True, port=5001)
 

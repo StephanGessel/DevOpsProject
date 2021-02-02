@@ -12,7 +12,6 @@ def user(id):
         try:
 
             name = request.json.get('name')
-            print('exe')
             set_data(id, name)
             return {'status': 'ok', 'user added': name}, 201  # status code
         except:
@@ -41,11 +40,9 @@ def user(id):
         except:
             return {'status': 'error', 'reason': "Mo such id"}, 500
 
+@app.route('/stop_server',methods=['GET'])
 def stop_server():
-    try:
-        os.kill(os.getpid(), signal.SIGINT)
-        return 'Server stopped', 200
-    except Exception as e:
-        return 'Error while stopping server', 500
+    os.kill(os.getpid(), signal.SIGINT)
+    return 'Server stopped'
 
 app.run(host='127.0.0.1', debug=True, port=5000)
