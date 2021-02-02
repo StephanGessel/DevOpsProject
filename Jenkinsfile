@@ -6,7 +6,7 @@ pipeline {
                 script {
                     properties([pipelineTriggers([pollSCM('*/30 * * * *')])])
                 }
-                git 'https://github.com/StephanGessel/DevOpsJenkins.git'
+                git 'https://github.com/StephanGessel/DevOpsProject.git'
             }
         }
         stage('run rest app server ') {
