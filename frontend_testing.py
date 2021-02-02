@@ -18,3 +18,5 @@ def front_test(id):
     finally:
         time.sleep(2)
         driver.quit()
+
+front_test('543')

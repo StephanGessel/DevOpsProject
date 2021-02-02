@@ -14,9 +14,4 @@ def combined_test(id, name):
         print("Combined test failed")
         print(e)
 
-
-# print('COMBINED TESTING')
-# print('##############')
-id = input('Enter ID: ')
-name = input('Enter Name: ')
-combined_test(id, name)
+combined_test('543', 'Jamie')
