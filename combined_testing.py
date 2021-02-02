@@ -1,14 +1,14 @@
-import backend_testing
-import frontend_testing
+from backend_testing import *
+from frontend_testing import *
 import db_connector
 
 def combined_test(id, name):
 
     try:
-        backend_testing.post_test(id, name)
-        backend_testing.get_test(id)
+        post_test(id, name)
+        get_test(id)
         db_connector.get_table()
-        frontend_testing.front_test(id)
+        front_test(id)
 
     except Exception as e:
         print("Combined test failed")
