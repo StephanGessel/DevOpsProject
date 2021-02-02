@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('run clean environmant ') {
+        stage('run clean environment ') {
             steps {
                 script {
                     sh ' python clean_environment.py'
