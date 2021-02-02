@@ -33,7 +33,6 @@ def delete_test(id):
 def backend_test(id, name, mod_name):
 
     try:
-
         db_connector.get_table()
         post_test(id, name)
         get_test(id)

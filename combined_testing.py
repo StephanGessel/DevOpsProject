@@ -5,6 +5,7 @@ import db_connector
 def combined_test(id, name):
 
     try:
+
         post_test(id, name)
         get_test(id)
         db_connector.get_table()
