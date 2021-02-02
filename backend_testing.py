@@ -37,6 +37,7 @@ def backend_test(id, name, mod_name):
         db_connector.get_table()
         post_test(id, name)
         get_test(id)
+        db_connector.get_table()
         put_test(id, mod_name)
         db_connector.get_table()
         delete_test(id)

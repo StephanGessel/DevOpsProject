@@ -9,6 +9,7 @@ def front_test(id):
         driver = webdriver.Chrome(executable_path="/users/sgessel/Downloads/chromedriver")
         driver.get(f"http://127.0.0.1:5001/users/get_user_data/{id}")
 
+        print('Chrome output:')
         print(driver.find_element_by_id("user").text)
 
     except Exception as e:
@@ -19,4 +20,4 @@ def front_test(id):
         time.sleep(2)
         driver.quit()
 
-front_test('543')
+front_test('9')
