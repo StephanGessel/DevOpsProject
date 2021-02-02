@@ -1,5 +1,5 @@
-from backend_testing import *
-from frontend_testing import *
+from backend_testing import post_test, get_test
+from frontend_testing import front_test
 import db_connector
 
 def combined_test(id, name):
