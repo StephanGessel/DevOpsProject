@@ -1,5 +1,7 @@
 from db_connector import *
 from flask import Flask, request
+import os
+import signal
 
 app = Flask(__name__)
 
@@ -38,5 +40,12 @@ def user(id):
             return {'status': 'ok', 'user_deleted': id}, 200  # status code
         except:
             return {'status': 'error', 'reason': "Mo such id"}, 500
+
+def stop_server():
+    try:
+        os.kill(os.getpid(), signal.SIGINT)
+        return 'Server stopped', 200
+    except Exception as e:
+        return 'Error while stopping server', 500
 
 app.run(host='127.0.0.1', debug=True, port=5000)

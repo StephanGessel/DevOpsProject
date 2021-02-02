@@ -1,5 +1,7 @@
 from flask import Flask
 from db_connector import *
+import os
+import signal
 
 app = Flask(__name__)
 
@@ -15,6 +17,13 @@ def user(id):
             return "<H1 id='user'>" + name + "</H1>", 200
     except:
         return "<H1 id='error'>""Something went wrong...</H1>", 500
+
+def stop_server():
+    try:
+        os.kill(os.getpid(), signal.SIGINT)
+        return 'Server stopped', 200
+    except Exception as e:
+        return 'Error while stopping server', 500
 
 
 app.run(host='127.0.0.1', debug=True, port=5001)
