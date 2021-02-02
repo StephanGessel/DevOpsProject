@@ -20,4 +20,5 @@ def front_test(id):
         time.sleep(2)
         driver.quit()
 
-front_test('9')
+if __name__ == '__main__':
+    front_test('9')

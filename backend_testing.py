@@ -47,4 +47,5 @@ def backend_test(id, name, mod_name):
         print("Frontend test failed")
         print(e)
 
-backend_test('543', 'Jamie', 'JamieNew')
+if __name__ == '__main__':
+    backend_test('543', 'Jamie', 'JamieNew')

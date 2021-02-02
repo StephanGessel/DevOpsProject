@@ -14,4 +14,5 @@ def combined_test(id, name):
         print("Combined test failed")
         print(e)
 
-combined_test('543', 'Jamie')
+if __name__ == '__main__':
+    combined_test('543', 'Jamie')
