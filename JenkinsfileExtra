@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Pull Code') {
             steps {
-                git 'https://github.com/keidar/Project2.git'
+                git 'https://github.com/StephanGessel/DevOpsProject.git'
             }
         }
         stage('run rest app server ') {
