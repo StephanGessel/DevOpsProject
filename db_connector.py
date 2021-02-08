@@ -6,20 +6,24 @@ import configparser
 config = configparser.ConfigParser()
 config.read('props.ini')
 
+def db_conn():
+    conn = pymysql.connect(
+        host=config.get('CREDS', 'HOST'),
+        port=3306,
+        user=config.get('CREDS', 'USERNAME'),
+        password=config.get('CREDS', 'PASSWORD'),
+        db=config.get('CREDS', 'DB'),
+        charset='utf8',
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    conn.autocommit(True)
+
+    return conn
+
 
 def get_table():
     try:
-        conn = pymysql.connect(
-            host=config.get('CREDS', 'HOST'),
-            port=3306,
-            user=config.get('CREDS', 'USERNAME'),
-            password=config.get('CREDS', 'PASSWORD'),
-            db=config.get('CREDS', 'DB'),
-            charset='utf8',
-            cursorclass=pymysql.cursors.DictCursor
-        )
-        conn.autocommit(True)
-
+        conn = db_conn()
         try:
             conn.connect()
             cursor = conn.cursor()
@@ -39,16 +43,7 @@ def get_table():
 def get_data(id):
 
     try:
-        conn = pymysql.connect(
-            host=config.get('CREDS', 'HOST'),
-            port=3306,
-            user=config.get('CREDS', 'USERNAME'),
-            password=config.get('CREDS', 'PASSWORD'),
-            db=config.get('CREDS', 'DB'),
-            charset='utf8',
-            cursorclass=pymysql.cursors.DictCursor
-        )
-        conn.autocommit(True)
+        conn = db_conn()
 
         try:
             conn.connect()
@@ -70,16 +65,7 @@ def get_data(id):
 def set_data(id, name):
 
     try:
-        conn = pymysql.connect(
-            host=config.get('CREDS', 'HOST'),
-            port=3306,
-            user=config.get('CREDS', 'USERNAME'),
-            password=config.get('CREDS', 'PASSWORD'),
-            db=config.get('CREDS', 'DB'),
-            charset='utf8',
-            cursorclass=pymysql.cursors.DictCursor
-        )
-        conn.autocommit(True)
+        conn = db_conn()
 
         try:
             today = date.today()
@@ -99,16 +85,7 @@ def set_data(id, name):
 def update(id, name):
 
     try:
-        conn = pymysql.connect(
-            host=config.get('CREDS', 'HOST'),
-            port=3306,
-            user=config.get('CREDS', 'USERNAME'),
-            password=config.get('CREDS', 'PASSWORD'),
-            db=config.get('CREDS', 'DB'),
-            charset='utf8',
-            cursorclass=pymysql.cursors.DictCursor
-        )
-        conn.autocommit(True)
+        conn = db_conn()
 
         try:
             conn.connect()
@@ -127,16 +104,7 @@ def update(id, name):
 def remove(id):
 
     try:
-        conn = pymysql.connect(
-            host=config.get('CREDS', 'HOST'),
-            port=3306,
-            user=config.get('CREDS', 'USERNAME'),
-            password=config.get('CREDS', 'PASSWORD'),
-            db=config.get('CREDS', 'DB'),
-            charset='utf8',
-            cursorclass=pymysql.cursors.DictCursor
-        )
-        conn.autocommit(True)
+        conn = db_conn()
 
         try:
             conn.connect()
