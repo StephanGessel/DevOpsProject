@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    parameters { 
+        choice(name: 'Script_Choice', choices: ['3', '2', '1'], description: '1 - Frontend \n 2 - Backend \n 3 - Combined') }
+    stages {
+        stage('Pull Code') {
+            steps {
+                git 'https://github.com/keidar/Project2.git'
+            }
+        }
+        stage('run rest app server ') {
+            steps {
+                script {
+                    sh 'nohup python rest_app.py &'
+
+                }
+            }
+        }
+        stage('run web app server') {
+            steps {
+                script {
+                    sh 'nohup python web_app.py &'
+
+                }
+            }
+        }
+
+        stage('Choice') {
+            steps {
+                script {
+                    if (params.Script_Choice == '1'){
+                        sh 'python frontend_testing.py'
+                    }else if (params.Script_Choice == '2'){
+                        sh 'python backend_testing.py'
+                    }else{
+                        sh 'python combined_testing.py'
+                   }
+                }
+            }
+        }
+
+        stage('run clean environmant ') {
+            steps {
+                script {
+                    sh ' python clean_environment.py'
+
+                }
+            }
+        }
+    }
+}
