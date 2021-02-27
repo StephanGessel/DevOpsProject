@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+        registry = "my-user/my-repo"
+        registryCredential = 'docker_hub'
+        dockerImage = ''
+    }
     stages {
         stage('Pull Code') {
             steps {
